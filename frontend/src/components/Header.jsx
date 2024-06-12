@@ -32,11 +32,11 @@ function Header() {
                 <Link to="/Donation_feed/working_procedure"><h2 className='font-serif'>How It Works </h2></Link>
                 <div className='flex items-center'><div className='pr-2'><FaSearch /></div><h2 className='font-serif'>Search</h2></div>
             </div>
-            <div className='flex items-center gap-2 lg:text-[15px] text-[10px]'><button className='border-solid border-blue-700 border-[1px] rounded-[30px] p-2 text-blue-700 font-serif'>Start a Fundraiser</button><div ><img className='w-[40px] h-[40px] rounded-full ' src="profile1.jpg" ></img></div><div ><select onChange={handleoptionclick2} className='border-solid border-blue-600 border-[1.5px] rounded-[30px] p-2 bg-transparent'>
+            <div className='flex items-center gap-2 lg:text-[15px] text-[10px]'><Link to="/create_fund" className='border-solid border-blue-700 border-[1px] rounded-[30px] p-2 text-blue-700 font-serif'>Start a Fundraiser</Link><div ><img className='w-[40px] h-[40px] rounded-full ' src="profile1.jpg" ></img></div><div ><select onChange={handleoptionclick2} className='border-solid border-blue-600 border-[1.5px] rounded-[30px] p-2 bg-transparent'>
                  
                  <option value="Sumit Singh" className='font-bold'>Sumit Singh</option>
                  <option value="">Register</option>
-                 <option value="View Profile" >View Profile</option>
+                 <option value="Home" >View Profile</option>
                  <option value="My Fundraisers">My Fundraisers</option>
                  <option value="My Donations">My Donations</option>
                  <option value="View My Impact">View My Impact</option>

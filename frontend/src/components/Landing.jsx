@@ -43,7 +43,7 @@ function Landing() {
                                         </div>
                                         
                                         <div className='flex flex-col mt-3  p-1 pb-3'>
-                                           <button className='lg:text-[18px] text-[15px] p-[3px]  text-white bg-blue-400 rounded-[5px]'>Start a Fundraiser</button>
+                                           <Link to="/create_fund" className='lg:text-[18px] text-[15px] p-[3px]  text-white bg-blue-400 rounded-[5px]'>Start a Fundraiser</Link>
                                         </div>
 
                                   </div>

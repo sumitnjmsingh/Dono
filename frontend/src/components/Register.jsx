@@ -47,7 +47,7 @@ function Register() {
     <>
     <div className='w-screen h-screen font-serif'>
         <div className='fixed h-screen w-screen top-0 left-0 z-[-1]'>
-              <div className="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_30%_80%_at_50%_40%,rgba(120,119,198,0.5),rgba(255,255,255,0))]"></div>
+              <div className="absolute top-0 z-[-2] h-screen w-screen bg-[url('back2.png')] bg-no-repeat bg-cover "></div>
         </div>
 
 
@@ -67,7 +67,7 @@ function Register() {
                           <div  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Home<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></div>
                       </div> 
                       <div className='flex items-center justify-center '>
-                          <div  id="login" className=' flex items-center justify-center  lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Profile<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></div>
+                          <Link to="/Home"  id="login" className=' flex items-center justify-center  lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Profile<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></Link>
                       </div> 
                       <div className='flex items-center justify-center '>
                           <Link to="/Donation_feed"  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[110px] h-[30px] w-[75px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Donation_feed<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-120px] z-[-1]  transition-all duration-1 linear'></div></Link>
@@ -170,7 +170,7 @@ function Register() {
 
        <div  className='fixed bottom-0 left-0 w-full px-10 py-4'>
           <div className='flex flex-col flex-wrap items-center text-center justify-center text-white'>
-              <p className='lg:text-[18px] text-[12px]'>sumit@iitm<span className='text-purple-600 lg:text-[20px] text-[12px]'>-2024</span >-Present < FaInstagram  className='text-pink-400  inline'/> <FaFacebook  className='text-blue-500  inline'/>  </p>
+              <p className='lg:text-[18px] text-[12px]'>sumit@iitm<span className='text-white lg:text-[20px] text-[12px]'>-2024</span >-Present < FaInstagram  className='text-pink-600  inline'/> <FaFacebook  className='text-blue-700  inline'/>  </p>
               <p className='lg:text-[18px] text-[12px]'>b22137@students.iitmandi.ac.in Get in Touch for more details 88405XXXXX</p>
           </div>
        </div>

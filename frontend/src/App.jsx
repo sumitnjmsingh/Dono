@@ -25,6 +25,7 @@ function App() {
       <Routes>
           <Route  path="/" element={<Register/>}></Route> 
           <Route  path="/Login" element={<Login/>}></Route> 
+          <Route  path="/Home" element={<Home/>}></Route> 
           <Route path="/Donation_feed"  element={<Landing/>}></Route>
           <Route path="/Donation_feed/working_procedure" element={<Work/>}/>
           <Route path="/create_fund" element={<Create_fund/>}/>

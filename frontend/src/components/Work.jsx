@@ -51,15 +51,15 @@ function Work() {
         </div>
 
 
-        <div className='flex flex-col items-center  py-4 '>
-            <motion.p initial={{y:80}}  whileInView={{y:0}} transition={{duration:1}} className='text-center font-bold text-3xl max-w-[400px]'>What is Crowdfunding?</motion.p>
+        <div className='flex flex-col items-center  py-4 my-10 '>
+            <motion.p initial={{y:60}}  whileInView={{y:0}} transition={{duration:1}} className='text-center font-bold text-3xl max-w-[400px]'>What is Crowdfunding?</motion.p>
             <motion.p  initial={{y:80}}  whileInView={{y:0}} transition={{duration:1}} className='text-center font-light max-w-[600px] text-xl'>In its simplest form, Crowdfunding is a practice of giving monetary funds to overcome specific social, cultural, or economic hurdles individuals face in their daily lives.</motion.p>
         </div>
 
        
 
-       <div className='flex flex-wrap p-3 gap-2'>
-         <div className='flex lg:w-1/2 w-screen lg:justify-center justify-center'>
+       <div className='flex flex-wrap  '>
+         <div className='flex lg:w-1/2 w-screen lg:justify-center justify-center my-6'>
             <motion.div  initial={{y:80}}  whileInView={{y:0}} transition={{duration:1}} className='w-2/3 flex  border-solid border-black border-[2px]'>
                      <iframe src="https://www.youtube.com/watch?v=6_urFkUK5wU"></iframe>
             </motion.div>
