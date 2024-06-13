@@ -3,6 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import Header from "./Header.jsx"
 import Footer2 from "./Footer2.jsx"
 import {motion} from "framer-motion"
+import Swiper from "./Swiper.jsx"
 
 function Work() {
   return (
@@ -11,14 +12,13 @@ function Work() {
         <div className='fixed top-0 left-0 h-screen z-[-1] w-screen bg-[#e2e3e4]'></div>
         <div className='flex flex-wrap justify-center items-center p-4 font-bold '><h1 className='text-4xl text-blue-600 max-w-[800px] text-center'>Raising Funds was never this easy. Start a fundraiser in 5 minutes!</h1></div>
         <div className=' flex flex-wrap justify-center  items-center mt-[60px]'>
-             <div className='lg:w-1/2 w-screen lg:justify-center justify-center'>
-             {/* <div className='w-2/3 flex  border-solid border-black border-[2px]'>
-                     <iframe src="https://www.youtube.com/watch?v=6_urFkUK5wU"></iframe>
-            </div> */}
+             <div className='lg:w-[60%] w-screen lg:justify-center flex justify-center items-center  pl-4'>
+             
+                   < Swiper />
                   
              
              </div> 
-             <div className='lg:w-1/2 w-screen flex flex-wrap justify-center '>
+             <div className='lg:w-[40%] w-screen flex flex-wrap justify-center '>
                  <div className='flex flex-col h-[90vh]  w-1/2 border-solid rounded-[10px] p-4 gap-6 shadow-2xl bg-slate-100'>
                         <div className=''>
                             <div><h1 className='text-black text-center font-serif text-[15px]  font-light lg:tracking-[20px] tracking-[10px]  '><span className='text-[25px] font-bold border-solid border-purple-600 border-[2px] rounded-[100px] pl-2 mx-1'>D</span>oNO</h1></div>
@@ -59,9 +59,9 @@ function Work() {
        
 
        <div className='flex flex-wrap  '>
-         <div className='flex lg:w-1/2 w-screen lg:justify-center justify-center my-6'>
-            <motion.div  initial={{y:80}}  whileInView={{y:0}} transition={{duration:1}} className='w-2/3 flex  border-solid border-black border-[2px]'>
-                     <iframe src="https://www.youtube.com/watch?v=6_urFkUK5wU"></iframe>
+         <div className='flex lg:w-1/2 w-screen lg:justify-center justify-center   my-6'>
+            <motion.div  initial={{y:80}}  whileInView={{y:0}} transition={{duration:1}} className='w-2/3 flex  border-solid border-black border-[2px] justify-center '>
+                     <iframe className='p-2' src="https://youtu.be/1Thl3SoHstU?si=isC3cf5ArZYDnS7F"></iframe>
             </motion.div>
          </div>
          <div className='flex lg:w-1/2 w-screen lg:justify-center justify-center'>
@@ -100,9 +100,9 @@ function Work() {
                     </div>
               </motion.div>
          </div>
-         <div className='flex lg:w-1/2 w-screen'>
-              <div className='w-2/3 h-[75vh] flex justify-center  lg:justify-end'>
-              <video src="./video3.mp4 "  autoPlay loop muted/>
+         <div className='flex lg:w-1/2 w-screen lg:justify-start justify-center'>
+              <div className='w-2/3 h-[75vh] flex justify-center  lg:justify-end '>
+              <video className='rounded-[35px]' src="./video3.mp4 "  autoPlay loop muted/>
               </div>
          </div>
        </div>
