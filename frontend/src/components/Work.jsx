@@ -23,8 +23,8 @@ function Work() {
                         <div className=''>
                             <div><h1 className='text-black text-center font-serif text-[15px]  font-light lg:tracking-[20px] tracking-[10px]  '><span className='text-[25px] font-bold border-solid border-purple-600 border-[2px] rounded-[100px] pl-2 mx-1'>D</span>oNO</h1></div>
                             <div>
-                                <h2 className='text-center font-bold text-2xl'>We know you are in urgent need of funds.</h2>
-                                <p className='text-center font-light text-xl'>Our personal fundraiser expert is waiting to get you started!</p>
+                                <h2 className='text-center font-bold lg:text-2xl text-xl'>We know you are in urgent need of funds.</h2>
+                                <p className='text-center font-light lg:text-xl text-[15px]'>Our personal fundraiser expert is waiting to get you started!</p>
                             </div>
                         </div>
                         <div className='flex flex-col '>
@@ -42,8 +42,8 @@ function Work() {
                              </div>
                         </div>
                         
-                        <div className='flex flex-col items-center lg:mt-6 mt-1 lg:gap-5 gap-2'>
-                            <div><button className='font-bold text-xl lg:text-2xl text-green-500 border-green-500 border-[2px] border-solid lg:p-2 p-1 rounded-[5px]'>GET A CALL</button></div>
+                        <div className='flex flex-col items-center lg:mt-6 mt-1 lg:gap-5 gap-1'>
+                            <div><button className='font-bold text-xl lg:text-2xl text-[8px] text-green-500 border-green-500 border-[2px] border-solid lg:p-2 p-1 rounded-[5px]'>GET A CALL</button></div>
                             <div><button className='text-white bg-green-600 font-bold  border-green-500 border-[2px] border-solid lg:p-2 p-1 rounded-[5px]'>CONNECT ON WHATSAPP</button></div>
                         </div>
                  </div>             

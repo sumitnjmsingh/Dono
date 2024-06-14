@@ -1,5 +1,5 @@
 import { useState,useRef,useEffect } from 'react'
-import {Link} from "react-router-dom"
+import {Link,useNavigate} from "react-router-dom"
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { CiLock } from "react-icons/ci";
@@ -21,6 +21,7 @@ function Register() {
   const elem2=useRef(null);
 
   const handle1=(e)=>{
+    e.preventDefault();
     if(tog1){
     elem1.current.type="text";
      settog1(false);
@@ -33,6 +34,7 @@ function Register() {
   
 
   const handle2=(e)=>{
+    e.preventDefault();
     if(tog2){
         elem2.current.type="text";
          settog2(false);
@@ -42,6 +44,49 @@ function Register() {
             settog2(true);   
             }
   }
+
+
+
+  const [USER,setUser]=useState({
+    name:"",email:"",password:"",conpassword:""
+  })
+  const navigate = useNavigate();
+  const [isParentHovered, setIsParentHovered] = useState(false);
+  let name,value
+  const handleinput=(e)=>{
+    
+     name=e.target.name
+     value=e.target.value
+     console.log(value)
+     setUser({...USER, [name]:value})
+
+  }
+const Postdata=async (e)=>{
+  e.preventDefault();
+  
+const {name,email,password,conpassword}=USER;
+const res=await fetch("http://localhost:3000/register",{
+  method:"POST",
+  headers:{
+    "Content-Type":"application/json"
+  },
+  body:JSON.stringify({
+    name,email,password,conpassword
+  })
+});
+ const data=await res.json();
+ console.log(data.redirectTo)
+
+ 
+ 
+ navigate(data.redirectTo);
+
+
+
+};
+
+
+
 
   return (
     <>
@@ -64,7 +109,7 @@ function Register() {
             <div>
                   <div className='flex items-center gap-1  lg:text-[15px] text-[10px] text-white lg:gap-3 border-b-solid border-b-purple-300 border-b-[1px] rounded-[30px] mb-1'>               
                   <div className='flex items-center justify-center m-1 '>
-                          <div  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Home<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></div>
+                          <Link to="/Updates"  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Home<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></Link>
                       </div> 
                       <div className='flex items-center justify-center '>
                           <Link to="/Home"  id="login" className=' flex items-center justify-center  lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Profile<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></Link>
@@ -93,7 +138,7 @@ function Register() {
                           <Link to="/"  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[60px] h-[30px] w-[40px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>SignUp<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-60px] z-[-1]  transition-all duration-1 linear'></div></Link>
                       </div> 
                       <div className='flex items-center justify-center '>
-                          <div  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[70px] h-[30px] w-[50px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Payment<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-80px] z-[-1]  transition-all duration-1 linear'></div></div>
+                          <Link to="/Payment"  id="login" className=' flex items-center justify-center lg:h-[40px] lg:w-[70px] h-[30px] w-[50px] relative  border-solid border-purple-500 border-[2px] rounded-[40px] p-[3px] overflow-hidden'>Payment<div id="green" className=' h-[100%] w-[100%] absolute bg-[#c4cad0] top-[0px]  left-[-80px] z-[-1]  transition-all duration-1 linear'></div></Link>
                       </div> 
 
                                        
@@ -114,28 +159,29 @@ function Register() {
 
 
        <div className='w-[100%] h-[100%]   flex justify-center items-center min-w-[210px]'>
-          <div className='w-[60%] h-[50%]  lg:w-[28%] lg:h-[70%] rounded-[20px] bg-[rgba(86,81,81,0.5)] grid grid-cols-1 grid-rows-[15%_40%_9%_9%_15%_10%] '>
+        
+          <form method="POST" className='w-[60%] h-[50%]  lg:w-[28%] lg:h-[70%] rounded-[20px] bg-[rgba(86,81,81,0.5)] grid grid-cols-1 grid-rows-[15%_40%_9%_9%_15%_10%] '>
                 <div className='flex justify-center items-center text-2xl text-white'><h1 className='font-serif'>Register</h1></div>
                 <div className='grid grrid-cols-1 grid-rows-4 lg:gap-2 gap-1'>
                       <div className='grid grid-cols-[10%_90%]'>
                            <div className='text-white lg:text-[20px] text-[15px]  flex justify-center items-start mx-[2px]'><CgProfile /></div>
                            <div className='flex flex-col justify-center '>
                                 <div className='flex justify-start items-center'><label className='text-white lg:text-[14px] text-[10px] font-serif' >Full Name</label></div>
-                                <div className='flex justify-start items-center '><input className='w-[90%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
+                                <div className='flex justify-start items-center '><input onChange={handleinput}   name="name" id="name" autoComplete='off'   value={USER.name} className='w-[90%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
                            </div>
                       </div>
                       <div className='grid grid-cols-[10%_90%] '>
                            <div className='text-white lg:text-[20px] text-[15px]  flex justify-center items-start mx-[2px]'><MdAlternateEmail /></div>
                            <div className='flex flex-col justify-center '>
                                  <div className='flex justify-start items-center'><label className='text-white lg:text-[14px] text-[10px]  font-serif' >Email or Phone Number</label></div>
-                                 <div className='flex justify-start items-center '><input type="email" className='w-[90%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
+                                 <div className='flex justify-start items-center '><input onChange={handleinput}  name="email" id="email" autoComplete='off'  value={USER.email} type="email" className='w-[90%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
                            </div>
                       </div>
                       <div className='grid grid-cols-[10%_80%_10%]'>
                            <div className='text-white lg:text-[20px] text-[15px]  flex justify-center items-start mx-[2px] '><CiLock /></div>
                            <div className='flex flex-col justify-center '>
                                  <div className='flex justify-start items-center'><label className='text-white lg:text-[14px] text-[10px]  font-serif' >Password</label></div>
-                                 <div className='flex justify-start items-center '><input ref={elem1} type="password" className='w-[100%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px]  px-1 text-white'></input></div>
+                                 <div className='flex justify-start items-center '><input   onChange={handleinput}  name="password" id="password" autoComplete='off'   value={USER.password} ref={elem1} type="password" className='w-[100%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px]  px-1 text-white'></input></div>
                            </div>
                            <div className='text-white lg:text-[20px] text-[15px]  flex justify-start items-start mx-[2px]' ><button onClick={handle1}>{(tog1)?<FaRegEyeSlash/>:<FaRegEye />}</button></div>
                       </div>
@@ -143,13 +189,13 @@ function Register() {
                            <div className='text-white lg:text-[20px] text-[15px] flex justify-center items-start mx-[2px]'><CiLock /></div>
                            <div className='flex flex-col justify-center '>
                                 <div className='flex justify-start items-center'><label className='text-white lg:text-[14px] text-[10px]  font-serif' >Confirm Password</label></div>
-                                <div className='flex justify-start items-center '><input ref={elem2} type="password" className='w-[100%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
+                                <div className='flex justify-start items-center '><input onChange={handleinput}  name="conpassword" id="password" autoComplete='off'   value={USER.conpassword} ref={elem2} type="password" className='w-[100%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
                            </div>
                            <div className='text-white lg:text-[20px] text-[15px]  flex justify-start items-start mx-[2px]' ><button onClick={handle2}>{(tog2)?<FaRegEyeSlash/>:<FaRegEye />}</button></div>
                       </div>
                 </div>
                 <div></div>
-                <div className='p-4 flex justify-center items-center'><button className='border-solid border-white border-[1px] rounded-[60px] w-[90%] text-xl text-white bg-neutral-600 font-serif '>Register</button></div>
+                <div className='p-4 flex justify-center items-center'><button onClick={Postdata} className='border-solid border-white border-[1px] rounded-[60px] w-[90%] text-xl text-white bg-neutral-600 font-serif '>Register</button></div>
                 <div className='grid grid-cols-1 grid-rows-2'>
                      <div className='flex justify-center items-center'><p className='text-white lg:text-[20px] text-[14px]'>Register in with</p></div>
                      <div className='grid grid-cols-2 grid-rows-1 gap-10'>
@@ -162,7 +208,8 @@ function Register() {
                     <p className='font-serif lg:text-[18px] text-[10px] '>Already have an account ?</p>
                     <Link to="/Login"  className='font-serif lg:text-[18px] text-[10px]' >Login Here</Link>
                 </div>
-          </div>
+         
+          </form>
        </div>
        
        

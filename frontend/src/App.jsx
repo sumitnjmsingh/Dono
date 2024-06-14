@@ -15,6 +15,7 @@ import NGO_Charity from "./components/NGO_Charity.jsx"
 import Other_Cause from "./components/Other_Cause.jsx"
 import Mydonation from "./components/Mydonation.jsx"
 import Payment from "./components/Payment.jsx"
+import Updates from "./components/Updates.jsx"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       <Routes>
           <Route  path="/" element={<Register/>}></Route> 
           <Route  path="/Payment" element={<Payment/>}></Route> 
+          <Route  path="/Updates" element={<Updates/>}></Route> 
           <Route  path="/Login" element={<Login/>}></Route> 
           <Route  path="/Home" element={<Home/>}></Route> 
           <Route  path="/Mydonation" element={<Mydonation/>}></Route> 

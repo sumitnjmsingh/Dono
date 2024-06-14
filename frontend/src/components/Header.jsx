@@ -20,12 +20,12 @@ function Header() {
   return (
     <div className='sticky top-0 left-0 z-[4] '>
         <div className='flex flex-wrap  w-screen  justify-around items-center bg-slate-300 p-1'>
-            <div><h1 className='text-black font-serif text-[20px]  font-light lg:tracking-[20px] tracking-[10px]  '><span className='text-[25px] font-bold border-solid border-purple-600 border-[2px] rounded-[100px] pl-4 mx-1'>D</span>oNO</h1></div>
+            <div><h1 className='text-black font-serif text-[20px]  font-light lg:tracking-[20px] tracking-[10px]  '><Link to="/Updates" className='text-[25px] font-bold border-solid border-purple-600 border-[2px] rounded-[100px] pl-4 mx-1'>D</Link>oNO</h1></div>
             <div className='flex justify-between gap-4 lg:text-[15px] text-[10px]'>
                 <Link to="/Donation_feed"><h2 className='font-serif'>Browse Fundraisers</h2></Link>
                 <div><select onChange={handleoptionclick1} className='font-serif bg-transparent'>
                             <option  value='Fundraise For'disabled selected  hidden>Fundraise For</option>
-                            <option value="create_fund">Medical Treatment</option>
+                            <option value="create_fund">Medical Treat</option>
                             <option value="NGO_Charity">NGO/Charity</option>
                             <option value="Other_Cause">Other Cause</option>
                      </select>
