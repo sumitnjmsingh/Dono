@@ -57,7 +57,7 @@ function Register() {
     
      name=e.target.name
      value=e.target.value
-     console.log(value)
+     
      setUser({...USER, [name]:value})
 
   }
@@ -65,7 +65,7 @@ const Postdata=async (e)=>{
   e.preventDefault();
   
 const {name,email,password,conpassword}=USER;
-const res=await fetch("http://localhost:3000/register",{
+const res=await fetch("http://localhost:3000/api/users/register",{
   method:"POST",
   headers:{
     "Content-Type":"application/json"

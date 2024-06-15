@@ -73,7 +73,7 @@ const [err,seterr]=useState("")
     e.preventDefault();
     
   const {name,password,conpassword}=USER;
-  const res=await fetch("http://localhost:3000/login",{
+  const res=await fetch("http://localhost:3000/api/users/login",{
     method:"POST",
     headers:{
       "Content-Type":"application/json"
@@ -84,12 +84,15 @@ const [err,seterr]=useState("")
   });
    const data=await res.json();
    if(res.status==200){
+    // console.log(document.cookie)
+    // console.log(data.refreshToken)
       navigate(data.redirectTo);
    }
    else{
       
       seterr(data.error);
       console.log(data.error)
+      
    }
    };
 
@@ -172,7 +175,7 @@ const [err,seterr]=useState("")
         
           <form method="POST" className='w-[60%] h-[50%]  lg:w-[28%] lg:h-[70%] rounded-[20px] bg-[rgba(86,81,81,0.5)] grid grid-cols-1 grid-rows-[15%_9%_40%_9%_15%_10%] '>
                 <div className='flex justify-center items-center text-2xl text-white'><h1 className='font-serif'>Login</h1></div>
-                <div className='flex justify-center items-center'><h1 className='text-[15px] text-red-600 text-center z-[2334] '>{err}</h1></div>
+                <div className='flex justify-center items-center'><h1 className='text-[15px] text-yellow-500 text-center z-[2334] '>{err}</h1></div>
                 <div className='grid grrid-cols-1 grid-rows-4 lg:gap-2 gap-1'>
                       
                       <div className='grid grid-cols-[10%_90%] '>
