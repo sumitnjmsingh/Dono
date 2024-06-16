@@ -1,12 +1,28 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import Header from "./Header.jsx"
 import Footer2 from "./Footer2.jsx"
 import { GiShiningHeart } from "react-icons/gi";
 import Swiper2 from "./Swiper2.jsx"
+import { Navigate} from "react-router-dom"
+import { AuthCheck } from './Auth.js'
 
 function Updates() {
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+    useEffect(() => {
+      const checkAuth = async () => {
+        const authStatus = await AuthCheck();
+        setIsAuthenticated(authStatus);
+      };
+      checkAuth();
+    }, []);
+
+    if (isAuthenticated === null) {
+        return <div>Loading...</div>;
+      }
+   
   return (
-    <div >
+    isAuthenticated?(<div >
         
         <Header/>
         <div className='w-screen relative'>
@@ -44,7 +60,7 @@ function Updates() {
             <p className='lg:text-[30px] text-[20px] text-slate-500 flex justify-center'>With Dono’s Social Impact Plan</p>
         </div>
         <Footer2/>
-    </div>
+    </div>):(< Navigate to="/login"/>)
   )
 }
 

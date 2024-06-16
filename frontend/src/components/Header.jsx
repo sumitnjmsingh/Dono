@@ -6,15 +6,38 @@ import { FaWhatsapp } from "react-icons/fa";
 function Header() {
   const navigate=useNavigate();
 
-  const handleoptionclick1=(event)=>{
+    const handleoptionclick1=(event)=>{
     const selectedvalue=event.target.value;
+    
     navigate(`/${selectedvalue}`)
 }
 
-  // const [selectedoption,setselectedoption]=useState("")
+
+const LogoutResponse= async()=>{
+  
+              
+  const response=await fetch("http://localhost:3000/api/users/logout",{
+   method:"POST",
+   headers:{
+        "Content-Type":"application/json"
+      },
+       credentials: 'include'
+  })
+
+  const data=await response.json();
+  console.log(data.message)
+  navigate("/login");
+}
+
   const handleoptionclick2=(event)=>{
       const selectedvalue=event.target.value;
-      navigate(`/${selectedvalue}`)
+      if(selectedvalue==="Logout"){
+     
+        LogoutResponse();
+             }
+      else{
+        
+      navigate(`/${selectedvalue}`)}
   }
 
   return (

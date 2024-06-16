@@ -15,10 +15,12 @@ import {motion} from "framer-motion";
 
 function Register() {
   const [tog1,settog1]=useState(true);
-  const [tog2,settog2]=useState(true);
+ 
+
+
+  const [avatar, setavatar] = useState(null);
 
   const elem1=useRef(null);
-  const elem2=useRef(null);
 
   const handle1=(e)=>{
     e.preventDefault();
@@ -31,24 +33,11 @@ function Register() {
         settog1(true);   
         }
   }
-  
-
-  const handle2=(e)=>{
-    e.preventDefault();
-    if(tog2){
-        elem2.current.type="text";
-         settog2(false);
-            }
-        else{
-            elem2.current.type="password";
-            settog2(true);   
-            }
-  }
 
 
 
   const [USER,setUser]=useState({
-    name:"",email:"",password:"",conpassword:""
+    name:"",email:"",password:""
   })
   const navigate = useNavigate();
   const [isParentHovered, setIsParentHovered] = useState(false);
@@ -61,21 +50,35 @@ function Register() {
      setUser({...USER, [name]:value})
 
   }
+
+
+  const handleFileChange = (e) => {
+    e.preventDefault();
+    
+    setavatar(e.target.files[0]);
+  };
+
 const Postdata=async (e)=>{
   e.preventDefault();
-  
-const {name,email,password,conpassword}=USER;
+  const formData = new FormData();
+  formData.append('avatar',avatar );
+  formData.append('name', USER.name);
+  formData.append('email', USER.email);
+  formData.append('password', USER.password);
+
+
 const res=await fetch("http://localhost:3000/api/users/register",{
   method:"POST",
-  headers:{
-    "Content-Type":"application/json"
-  },
-  body:JSON.stringify({
-    name,email,password,conpassword
-  })
+  // headers:{
+  //   "Content-Type":"application/json"
+  // },
+  // body:JSON.stringify({
+  //   name,email,password,conpassword
+  // })
+  body:formData
 });
  const data=await res.json();
- console.log(data.redirectTo)
+
 
  
  
@@ -188,10 +191,10 @@ const res=await fetch("http://localhost:3000/api/users/register",{
                       <div className='grid grid-cols-[10%_80%_10%]'>
                            <div className='text-white lg:text-[20px] text-[15px] flex justify-center items-start mx-[2px]'><CiLock /></div>
                            <div className='flex flex-col justify-center '>
-                                <div className='flex justify-start items-center'><label className='text-white lg:text-[14px] text-[10px]  font-serif' >Confirm Password</label></div>
-                                <div className='flex justify-start items-center '><input onChange={handleinput}  name="conpassword" id="password" autoComplete='off'   value={USER.conpassword} ref={elem2} type="password" className='w-[100%] h-[60%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
+                                <div className='flex justify-start items-center'><label className='text-white lg:text-[14px] text-[10px]  font-serif' >Avatar</label></div>
+                                <div className='flex justify-start items-center '><input onChange={handleFileChange}  name="avatar" id="avatar" autoComplete='off'   value={USER.avatar}  type="file" className='w-[100%] h-[100%] bg-transparent border-b-solid outline-none border-b-purple-300 border-b-[1px] rounded-[10px] text-white px-1'></input></div>
                            </div>
-                           <div className='text-white lg:text-[20px] text-[15px]  flex justify-start items-start mx-[2px]' ><button onClick={handle2}>{(tog2)?<FaRegEyeSlash/>:<FaRegEye />}</button></div>
+                           {/* <div className='text-white lg:text-[20px] text-[15px]  flex justify-start items-start mx-[2px]' ><button onClick={handle2}>{(tog2)?<FaRegEyeSlash/>:<FaRegEye />}</button></div> */}
                       </div>
                 </div>
                 <div></div>

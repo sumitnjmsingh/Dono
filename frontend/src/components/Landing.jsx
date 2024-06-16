@@ -1,13 +1,29 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import { FaSearch } from "react-icons/fa"
 import Card from "./Card.jsx"
 import Header from "./Header.jsx"
 import Footer2 from "./Footer2.jsx"
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
+import { AuthCheck } from './Auth.js'
 
 
 function Landing() {
+       const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+       useEffect(() => {
+         const checkAuth = async () => {
+           const authStatus = await AuthCheck();
+           setIsAuthenticated(authStatus);
+         };
+         checkAuth();
+       }, []);
+   
+       if (isAuthenticated === null) {
+           return <div>Loading...</div>;
+         }
+ 
   return (
+       isAuthenticated?(
     <div className='relative'>
         <Header/>
         <div className='w-screen h-[380px] bg-[url("girl2.jpg")] bg-no-repeat bg-cover bg-center relative   '>
@@ -136,7 +152,7 @@ function Landing() {
 
        <Footer2/>
 
-    </div>
+    </div>):(< Navigate to="/login"/>)
   )
 }
 

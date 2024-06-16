@@ -1,12 +1,27 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import Header from "./Header.jsx"
 import Footer2 from "./Footer2.jsx"
 import { AiOutlineAlipay } from "react-icons/ai";
 import { FaPaypal } from "react-icons/fa6";
+import { Navigate} from "react-router-dom"
+import { AuthCheck } from './Auth.js'
 
 function Payment() {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+    useEffect(() => {
+      const checkAuth = async () => {
+        const authStatus = await AuthCheck();
+        setIsAuthenticated(authStatus);
+      };
+      checkAuth();
+    }, []);
+
+    if (isAuthenticated === null) {
+        return <div>Loading...</div>;
+      }
   return (
-    <div>
+    isAuthenticated?(<div>
         <Header/>
         <div className='flex justify-center items-center w-screen h-[90vh] bg-[url("back5.png")] bg-center bg-no-repeat bg-cover flex-col'>
         <div className='flex items-center gap-2'><div className='text-blue-500 text-4xl'><FaPaypal /></div><div className='text-blue-500 text-4xl'><AiOutlineAlipay /></div><p className='text-2xl font-thin'>Pay Through PhonePay</p></div>
@@ -19,7 +34,7 @@ function Payment() {
             <div className='flex flex-wrap justify-center items-center p-1'><p className='font-bold font-serif text-3xl '>Donate for Healthy World</p></div>
         </div>
         <Footer2/>
-    </div>
+    </div>):(< Navigate to="/login"/>)
   )
 }
 

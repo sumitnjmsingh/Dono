@@ -1,9 +1,24 @@
-import React from 'react'
+import {React,useState,useEffect} from 'react'
 import Header from "./Header.jsx"
+import { Navigate} from "react-router-dom"
+import { AuthCheck } from './Auth.js'
 
 function Home() {
+  const [isAuthenticated, setIsAuthenticated] = useState(null);
+
+    useEffect(() => {
+      const checkAuth = async () => {
+        const authStatus = await AuthCheck();
+        setIsAuthenticated(authStatus);
+      };
+      checkAuth();
+    }, []);
+
+    if (isAuthenticated === null) {
+        return <div>Loading...</div>;
+      }
   return (
-    <div>
+    isAuthenticated?(<div>
           <Header/>
                 <div className="absolute top-0 z-[-2] h-[80vh] w-screen bg-neutral-950 bg-[radial-gradient(ellipse_30%_80%_at_50%_40%,rgba(120,119,198,0.5),rgba(255,255,255,0))]"></div>
        
@@ -25,7 +40,7 @@ function Home() {
                      <div><button className='bg-slate-600 text-white p-3 rounded-[10px]'>Message</button></div>
              </div>
 
-    </div>
+    </div>):(< Navigate to="/login"/>)
   )
 }
 

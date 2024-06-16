@@ -16,6 +16,7 @@ import {motion} from "framer-motion";
 function Login() {
   const [tog1,settog1]=useState(true);
   const [tog2,settog2]=useState(true);
+ 
 
   const elem1=useRef(null);
   const elem2=useRef(null);
@@ -78,14 +79,13 @@ const [err,seterr]=useState("")
     headers:{
       "Content-Type":"application/json"
     },
+    credentials: 'include',
     body:JSON.stringify({
       name,password,conpassword
     })
   });
    const data=await res.json();
    if(res.status==200){
-    // console.log(document.cookie)
-    // console.log(data.refreshToken)
       navigate(data.redirectTo);
    }
    else{
